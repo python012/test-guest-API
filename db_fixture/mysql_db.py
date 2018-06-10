@@ -4,17 +4,17 @@ import os
 import configparser
 
 
-base_dir = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
-db_config_file = 'db_config.ini'
+_base_dir = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+_db_config_file = 'db_config.ini'
 
-cf = configparser.ConfigParser()
-cf.read(os.path.join(base_dir, db_config_file))
+_cf = configparser.ConfigParser()
+_cf.read(os.path.join(_base_dir, _db_config_file))
 
-host = cf.get("mysqlconf", "host")
-port = cf.get("mysqlconf", "port")
-db = cf.get("mysqlconf", "db_name")
-user = cf.get("mysqlconf", "user")
-password = cf.get("mysqlconf", "password")
+host = _cf.get("mysqlconf", "host")
+port = _cf.get("mysqlconf", "port")
+db = _cf.get("mysqlconf", "db_name")
+user = _cf.get("mysqlconf", "user")
+password = _cf.get("mysqlconf", "password")
 
 # Encapsulating MySQL operation
 class DB(object):
@@ -47,9 +47,6 @@ class DB(object):
         print(real_sql)
 
         with self.conn.cursor() as cursor:
-            print('-----------------------------------')
-            print(real_sql)
-            print('-----------------------------------')
             cursor.execute(real_sql)
         self.conn.commit()
     
@@ -58,13 +55,13 @@ class DB(object):
 
 
 if __name__ == '__main__':
-    print(os.path.join(base_dir, db_config_file))
+    print('Using INI file: ' + os.path.join(_base_dir, _db_config_file))
     db = DB()
     table_name = "sign_event"
     data = {'id':12,
             'name': '大可乐',
-            'limit': 200,
-            'status': True,
+            'attendees_limit': 200,
+            'status': 1,
             'address': '古城大理南陵西路12号悦来客栈',
             'start_time': '2012-09-12 14:30:00'
             }
