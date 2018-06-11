@@ -2,13 +2,19 @@
 
 ## SETUP
 
-Use MySql to setup database:
+### Option 1
+
+Do it manually, just use MySql to setup database and tables:
 
 ``` sql
 create database guest_test;
 use guest_test;
 CREATE TABLE sign_event(id INT PRIMARY KEY, name VARCHAR(100), attendees_limit INT, status BOOLEAN, address VARCHAR(200), start_time DATETIME) DEFAULT CHARSET=utf8;
 ```
+
+### Option 2
+
+Create database guest_test in MySql, rename the database name in `guest/settings.py` of guest project folder, and run `python3 manage.py runserver`, Django will help init the tables structure.
 
 ## TEST
 
