@@ -1,6 +1,7 @@
 import sys
 sys.path.append('../db_fixture')
-from mysql_db import DB
+# from mysql_db import DB
+from db_fixture.mysql_db import DB
 
 
 datas = {
