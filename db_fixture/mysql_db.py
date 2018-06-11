@@ -34,6 +34,7 @@ class DB(object):
         real_sql = "delete from " + table_name + ';'
         with self.conn.cursor() as cursor:
             cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
+            print('======== > ' + real_sql)
             cursor.execute(real_sql)
         self.conn.commit()
     
@@ -44,14 +45,13 @@ class DB(object):
         value = ','.join(table_data.values())
         real_sql = "INSERT INTO " + table_name + "(" + key + ") VALUES (" + value + ")"
 
-        print(real_sql)
-
         with self.conn.cursor() as cursor:
+            print('======== > ' + real_sql)
             cursor.execute(real_sql)
         self.conn.commit()
     
     def close(self):
-        self.conn.close()
+        self.conn.close() # Pending issue: will raise pymysql.err.InterfaceError: (0, '')
 
 
 if __name__ == '__main__':
@@ -63,8 +63,9 @@ if __name__ == '__main__':
             'attendees_limit': 200,
             'status': 1,
             'address': '古城大理南陵西路12号悦来客栈',
-            'start_time': '2012-09-12 14:30:00'
+            'start_time': '2012-09-12 14:30:00',
+            'create_time': '2018-06-11 09:30:00'
             }
-    # db.clear(table_name)
+    db.clear(table_name)
     db.insert(table_name, data)
     db.close()
