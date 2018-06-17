@@ -3,8 +3,7 @@ import requests
 import os, sys
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, parentdir)
-from db_fixture import test_data
-
+from db_fixture import test_data_auto
 
 # print(__file__)
 # print(os.path.abspath(__file__))
@@ -22,6 +21,7 @@ class AddEventTest(unittest.TestCase):
         print(self.result)
     
     def test_add_event_all_null(self):
+        '''test adding event while all data fileds are null'''
         payload = {
             'eid': '',
             '': '',
@@ -35,6 +35,7 @@ class AddEventTest(unittest.TestCase):
         self.assertEqual(self.result['message'], 'parameter error')
 
     def test_add_event_name_exist(self):
+        '''test adding event while event id already exists'''
         payload = {
             'eid': 1,
             'name': '小米Note手机发布会',
@@ -50,6 +51,7 @@ class AddEventTest(unittest.TestCase):
         self.assertEqual(self.result['message'], 'event id already exists')
 
     def test_add_event_data_type_error(self):
+        '''test adding event while giving incorrect start_time'''
         payload = {
             'eid': 8,
             'name': '锤子科技T9手机发布会',
@@ -65,6 +67,7 @@ class AddEventTest(unittest.TestCase):
         self.assertIn('start_time format error', self.result['message'])
 
     def test_add_event_success(self):
+        '''test adding event successfully while giving good data'''
         payload = {
             'eid': 20,
             'name': '锤子科技TNT效率工具发布会',
@@ -81,8 +84,5 @@ class AddEventTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    test_data.init_data()
+    test_data_auto.init_data()
     unittest.main()
-
-
-    

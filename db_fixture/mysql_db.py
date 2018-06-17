@@ -34,7 +34,7 @@ class DB(object):
         real_sql = "delete from " + table_name + ';'
         with self.conn.cursor() as cursor:
             cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
-            print('=== > ' + real_sql)
+            print('- ' + real_sql)
             cursor.execute(real_sql)
         self.conn.commit()
     
@@ -46,7 +46,7 @@ class DB(object):
         real_sql = "INSERT INTO " + table_name + "(" + key + ") VALUES (" + value + ")"
 
         with self.conn.cursor() as cursor:
-            print('=== > ' + real_sql)
+            print('- ' + real_sql)
             cursor.execute(real_sql)
         self.conn.commit()
     
