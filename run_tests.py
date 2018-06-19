@@ -1,7 +1,7 @@
 import time, sys
 sys.path.append('./interface')
 sys.path.append('./db_fixture')
-sys.path.append('./HTMLTestRunner_PY3')
+# sys.path.append('./HTMLTestRunner_PY3')
 # from HTMLTestRunner_PY3.HTMLTestRunner_PY3 import HTMLTestRunner
 import HtmlTestRunner
 import unittest
