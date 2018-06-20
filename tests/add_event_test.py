@@ -5,11 +5,6 @@ parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, parentdir)
 from db_fixture import test_data_auto
 
-# print(__file__)
-# print(os.path.abspath(__file__))
-# print(os.path.dirname(os.path.abspath(__file__)))
-# print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 
 class AddEventTest(unittest.TestCase):
 
