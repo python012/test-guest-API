@@ -36,10 +36,10 @@ class GetEventListTest(unittest.TestCase):
         auth_user = ('admin', 'admin01234')
         r = requests.get(self.base_url, auth=auth_user, params={'eid':'1'})
         result = r.json()
-        print(result)
         self.assertEqual(result['status'], 200)
-        self.assertEqual(result['data']['name'], u'小米Note手机发布会')
-        self.assertEqual(result['data']['address'], u'北京798艺术区c区1号')
+        self.assertEqual(len(result['data']), 1)
+        self.assertEqual(result['data'][0]['name'], u'小米Note手机发布会')
+        self.assertEqual(result['data'][0]['address'], u'北京798艺术区c区1号')
 
 
 if __name__ == '__main__':
