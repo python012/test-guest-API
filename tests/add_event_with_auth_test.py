@@ -18,7 +18,7 @@ class AddEventWithAuthTest(unittest.TestCase):
         sign_bytes_utf8 = sign_str.encode(encoding='utf-8')
         md5.update(sign_bytes_utf8)
         self.sign_md5 = md5.hexdigest()
-    
+
     def test_add_event_request_error(self):
         """
         request method error
